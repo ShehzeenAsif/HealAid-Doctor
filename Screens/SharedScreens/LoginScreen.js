@@ -10,6 +10,10 @@ const LoginScreen = ({ navigation, route }) => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const signupHandler = () => {
+    navigation.navigate("SignupScreen", {});
+  };
+
   const loginAsDocHandler = async () => {
     // Reset previous error messages
     setEmailError("");
@@ -79,6 +83,14 @@ const LoginScreen = ({ navigation, route }) => {
             Login
           </Button>
         </View>
+
+        <Text style={styles.registerText}>
+          New User?
+          <Text style={styles.registerSubtext} onPress={signupHandler}>
+            Register Now
+          </Text>
+        </Text>
+
       </Card>
     </View>
   );
@@ -109,6 +121,15 @@ const styles = StyleSheet.create({
   errorText: {
     color: "red",
     marginBottom: 8,
+  },
+  registerText: {
+    fontSize: 16,
+    marginTop: 16,
+    color: colors.blue,
+  },
+  registerSubtext: {
+    textDecorationLine: "underline",
+    fontWeight: "bold",
   },
   button: {
     paddingHorizontal: 60,

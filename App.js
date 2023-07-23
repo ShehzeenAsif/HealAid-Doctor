@@ -10,6 +10,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { colors } from "./constants/colors";
+import SignupScreen from './Screens/DoctorScreens/SignupScreen';
 
 import DoctorProfile from './Screens/DoctorScreens/DoctorProfile';
 import ScheduledAppointments from './Screens/DoctorScreens/ScheduledAppointments';
@@ -87,6 +88,13 @@ export default function App() {
               component={LoginScreen}
               options={{
                 headerShown: false,
+              }}
+            />
+            <Stack.Screen
+              name="SignupScreen"
+              component={SignupScreen}
+              options={{
+                title: "Register Yourself",
               }}
             />
             <Stack.Screen name="DoctorDashboard" component={DoctorDashboard} />
