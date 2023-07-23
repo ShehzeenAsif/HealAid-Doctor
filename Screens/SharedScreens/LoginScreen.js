@@ -10,7 +10,7 @@ const LoginScreen = ({ navigation, route }) => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const loginAsDocHandler = () => {
+  const loginAsDocHandler = async () => {
     // Reset previous error messages
     setEmailError("");
     setPasswordError("");
@@ -25,6 +25,18 @@ const LoginScreen = ({ navigation, route }) => {
       setPasswordError("Password is required.");
       return;
     }
+
+    const response =  await fetch("http://127.0.0.1:9000/doctor/login",{
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    }).then((response) => response.json)
 
     // If all fields are filled, proceed to login
     navigation.navigate("DoctorDashboard", {});
